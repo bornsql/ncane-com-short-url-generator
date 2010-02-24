@@ -107,33 +107,8 @@ class MySQLDB
    /* Class constructor */
    function MySQLDB()
    {
-
-   		$randint = 0;
-		srand((double)microtime() * 1000000);
-		// our array
-		$connections = array(1, 2, 3, 4, 5);
-		$random = rand(0, count($connections) - 1);
-		$randint = $random;
-
-	    /* Make connection to database - but randomise the connection string */
-		switch ($randint)
-		{
-			case 2:
-				$this->connection = mysql_connect(DB_SERVER, DB_USER, DB_PASS) or die(mysql_error());
-				break;
-			case 3:
-				$this->connection = mysql_connect(DB_SERVER, DB_USER, DB_PASS) or die(mysql_error());
-				break;
-			case 4:
-				$this->connection = mysql_connect(DB_SERVER, DB_USER, DB_PASS) or die(mysql_error());
-				break;
-			default:
-				usleep(50000);
-				$this->connection = mysql_connect(DB_SERVER, DB_USER, DB_PASS) or die(mysql_error());
-				break;
-		}
-
-		mysql_select_db(DB_NAME, $this->connection) or die(mysql_error());
+	$this->connection = mysql_connect(DB_SERVER, DB_USER, DB_PASS) or die(mysql_error());
+	mysql_select_db(DB_NAME, $this->connection) or die(mysql_error());
 
       /**
        * Only query database to find out number of members
