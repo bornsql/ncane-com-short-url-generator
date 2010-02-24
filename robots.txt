@@ -1,0 +1,4 @@
+# robots.txt for ncane.com
+
+User-agent: *
+
